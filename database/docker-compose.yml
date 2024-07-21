@@ -12,7 +12,7 @@ services:
   postgresql-server:
     image: postgres:16
     restart: unless-stopped
-    container_name: postgresql-server-container #host for pgadmin
+    container_name: postgresql-server-container-webapi #host for pgadmin
     ports:
       - 5432:5432
     volumes:
@@ -33,7 +33,7 @@ services:
 
 
   pgadmin:
-    container_name: pgadmin_container
+    container_name: pgadmin_container_webapi
     image: dpage/pgadmin4:7.2
     environment:
       PGADMIN_DEFAULT_EMAIL: "user@psg.com"
