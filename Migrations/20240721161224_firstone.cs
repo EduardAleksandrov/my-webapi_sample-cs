@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace webone.Migrations
 {
     /// <inheritdoc />
-    public partial class firstone : Migration
+    public partial class Firstone : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

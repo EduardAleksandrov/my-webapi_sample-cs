@@ -11,7 +11,7 @@ namespace webone.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     [Migration("20240721161719_secondone")]
-    partial class secondone
+    partial class Secondone
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

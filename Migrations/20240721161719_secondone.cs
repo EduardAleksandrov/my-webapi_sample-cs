@@ -5,7 +5,7 @@
 namespace webone.Migrations
 {
     /// <inheritdoc />
-    public partial class secondone : Migration
+    public partial class Secondone : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

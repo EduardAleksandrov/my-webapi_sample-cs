@@ -19,6 +19,10 @@ internal class Program
         string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
         builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connection));
         // ---
+        
+        // CORS
+        builder.Services.AddCors();
+        // ---
 
         var app = builder.Build();
 
@@ -27,6 +31,8 @@ internal class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+            // CORS
+            app.UseCors(builder => builder.AllowAnyOrigin());
         }
 
         app.UseHttpsRedirection();
