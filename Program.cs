@@ -1,4 +1,6 @@
-
+/*
+    Start with seeds
+*/
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 // [key]
