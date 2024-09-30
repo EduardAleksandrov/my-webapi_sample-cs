@@ -1,4 +1,6 @@
-
+/*
+    Старт ветка
+*/
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 // [key]
