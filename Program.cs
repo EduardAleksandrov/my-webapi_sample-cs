@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Npgsql;
 // [key]
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 internal class Program
 {
@@ -75,7 +77,7 @@ internal class Program
         // }
 
         // Entity Framework
-        app.MapGet("/dep", (ApplicationContext db) => db.departments.ToList());
+        app.MapGet("/dep", (ApplicationContext db) => db.Departments.ToList());
 
 
         app.Run();
@@ -112,17 +114,30 @@ public class ApplicationContext : DbContext
             : base(options)
     {
     }
-    public DbSet<Departments> departments { get; set; }
+    public DbSet<Departments> Departments { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Departments>().HasData(
+            new Departments {  Dep_name = "финансовый отдел", Dep_manager = "Феликсов Алексей Сергеевич" },
+            new Departments {  Dep_name = "финансовый отдел", Dep_manager = "Кирьянов Алексей Сергеевич" }
+        );
+    }
 }
 // Entity Framework
 public class Departments
 {
+    
     [Key]
-    public int id_department { get; set; }
+    public Guid Id_department { get; set; } = Guid.NewGuid();
+    [Required]
+    [MaxLength(150)]    
+    public string? Dep_name { get; set; }
     [Required]
     [MaxLength(150)]
-    public string? dep_name { get; set; }
-    [Required]
-    [MaxLength(150)]
-    public string? dep_manager { get; set; }
+    public string? Dep_manager { get; set; }
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Auto { get; set; }
 }
