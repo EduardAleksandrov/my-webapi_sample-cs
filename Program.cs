@@ -79,6 +79,19 @@ internal class Program
         // Entity Framework
         app.MapGet("/dep", (ApplicationContext db) => db.Departments.ToList());
 
+        // app.MapPost("/dep", async (ApplicationContext db, Department department) => 
+        // {
+        //     // Optionally, you can check if the OrderId exists in the Orders table
+        //     var orderExists = await db.Orders.AnyAsync(o => o.Id == department.OrderId);
+        //     if (!orderExists)
+        //     {
+        //         return Results.NotFound("Order not found.");
+        //     }
+
+        //     db.Departments.Add(department);
+        //     await db.SaveChangesAsync();
+        //     return Results.Created($"/dep/{department.Id}", department);
+        // });
 
         app.Run();
     }
